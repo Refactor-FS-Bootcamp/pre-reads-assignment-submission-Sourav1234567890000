@@ -1,0 +1,227 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalStorage</title>
+    <style>
+
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500,600,700,800,900&display=swap'); */
+
+        *{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;}
+
+    nav{
+        /* border: 2px red solid; */
+        height: 45px;
+        text-align: center;
+        color: #e0f2f1;
+        font-size: larger;
+        /* font-weight: 900;
+        font-weight: bold; */
+    }
+
+    .container{
+        max-width: 1200px;
+        width: 100%;
+        margin: auto;
+    }
+
+    .header{
+        margin-top: .8rem;
+        min-height: 40vh;
+        height: 57vh;
+        box-shadow: 0px 0px 10px 12px grey;
+        /* background-color: 	hwb(120 15% 57% / 0.909); */
+        background: url('pic11.jpg'); 
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover; 
+        /* padding-top: rem; */
+
+    }
+
+    .div{
+        margin-top: 0.5px;
+        min-height: 40vh;
+        max-width: 88%;
+        /* border: 1.5px solid black;   */
+        margin-left: 5%;
+        padding-top: 2rem;
+    }
+
+    #tittle{
+        /* border: 2px solid black; */
+        /* background-image: url(pic12.jpg); */
+        opacity: 0.8 ;;
+        background-color: black;
+        /* box-shadow: 0px 0px 2px 4px whitesmoke; */
+
+        padding-top: 1.5rem;
+        width: 100%;
+        min-height: 20%;
+        color: white;
+        font-size: medium;
+        font-weight: 200;
+        
+
+    }
+
+    #Yournote{
+        /* border: 2px solid black; */
+        /* background-image: url(pic12.jpg); */
+        background-color: black;
+        box-decoration-break: slice;
+        opacity: 0.7 ;;
+        width: 100%;
+        height: 100%;
+        color: white;
+        margin-top: 0.3rem;
+        padding: 4rem 4rem;
+        
+    }
+    .btn{
+        
+        /* box-shadow: 0px 0px 2px 4px grey; */
+    padding: 0.5rem 0.5rem;
+    padding-bottom: 1rem;
+    font-size: 0.7rem;
+    margin-top: .4rem;
+    margin-bottom: 1rem;
+    font-weight: 100;
+    /* color: black;
+    background-color: blue; */
+    border-top-left-radius: .5rem;
+    border-bottom-right-radius: .5rem;
+    border-bottom-left-radius: .5rem;
+    border-top-right-radius: .5rem;
+    }
+
+     .section1{
+        
+        text-align: center;
+        /* border: 1px solid red; */
+        
+        
+        min-height: 30px;
+        height: 8vh;
+        padding-top: .8rem;
+        padding-left: 3.4rem;
+        font-size: larger;
+    }
+    .section1 h3{
+        
+        color: #000;
+        font-size: large;
+    } 
+    
+
+    .section2{
+        background: url('pic14.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        box-shadow: 0px 0px 10px 10px rgb(191, 191, 191);
+        opacity: 2px;;
+
+        /* border: 1px solid black; */
+        min-height: 50px;
+        width: 100%;
+        height: 28vh;
+        display: flex;
+        justify-content: space-around;
+    }
+    
+
+    .section2-div1{
+        width: 30%;
+        height: 80%;
+        color: aliceblue;
+        /* border: 2px solid blue; */
+        margin: 2rem;
+        /* justify-content: space-between; */
+    }
+
+    .section2-div2{
+        width: 30%;
+        height: 80%;
+        /* background-color: rgb(158, 153, 153); */
+        color: whitesmoke;
+        margin-right: 23rem;
+        margin-top: 2rem;
+        
+        /* border: 2px solid yellow; */
+        /* margin: 2rem; */
+        /* justify-content: space-between; */
+    }
+
+    .section2-div2 h2{
+        font-size: larger;
+        font-weight: bolder;
+    }
+
+    
+
+    </style>
+</head>
+
+<body>
+    <header class="header container">
+    <nav class="nav container">
+        <h1 class="logo">LocalStorage</h1>
+    </nav>
+    <div class="div">
+        <form class="form">
+        <label for="title" ></label>
+        <input type="text" name="title" placeholder="COVID-19" id="tittle"> 
+        <br> <br>
+        <label for="Yournote"></label>
+        <input type="text" name="Article" placeholder="its a pandemic which taught humans their values to serving the world." id="Yournote"> 
+        
+        <button type="button" id =" add_Note_btn" onclick="addNote()">Add NOTE</button>
+        </form>
+    </div>
+    </header>
+     <section class="section1 conatiner">
+        <div>
+            <h3>YOUR NOTES</h2>
+        </div>
+    </section> 
+    <section class="section2 container">
+        <!-- <div class="section2-div1">
+            <h4>tittle</h4>
+            <h5>NOTES</h5>
+            <button class="btn">Add note</button>
+            <button class="btn"></button>
+        </div> -->
+
+         <div class="section2-div2">
+            <h2>TITTLE</h4>
+            <br>
+            <h2>NOTES</h4>
+            <button class="">Add note</button>
+            <button class="">Delete note</button>
+        </div> 
+    </section>
+
+    <div id="msg">
+
+    </div>
+
+    <script>
+        let addNotebtn = document.getElementById('add_Note_btn');
+        addNotebtn.addEventListener('click',addNote);
+        function addNote(event)
+        {
+            console.log(event);
+        }
+
+         
+    </script>
+</body>
+</html>
